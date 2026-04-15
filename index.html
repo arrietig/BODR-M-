@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bodrüm | Nails y Beauty Bar</title>
+  <meta name="description" content="Bodrüm Nails y Beauty Bar — uñas, pestañas, cejas y más. Reserva tu cita online." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">
+        <span class="nav__logo-text">BODRÜM</span>
+        <span class="nav__logo-sub">nails · beauty bar</span>
+      </a>
+      <nav class="nav__links">
+        <a href="#about">Nosotras</a>
+        <a href="#services">Servicios</a>
+        <a href="#products">Productos</a>
+        <a href="#booking">Reserva</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+      <button class="nav__toggle" aria-label="Menú" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__video-wrap">
+      <video class="hero__video active" autoplay muted loop playsinline style="object-position: center 35%;">
+        <source src="assets/videos/hero-01.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__slide" style="background-image:url('assets/img/hero-1.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('assets/img/hero-2.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('assets/img/hero-3.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('assets/img/hero-4.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('assets/img/hero-5.jpg'); background-position: center 30%;"></div>
+      <div class="hero__slide" style="background-image:url('assets/img/hero-6.jpg'); background-position: center 70%;"></div>
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">nails · lashes · beauty</p>
+      <h1 class="hero__title">
+        <span>BODRÜM</span>
+        <em class="hero__tagline">N A I L S &nbsp;Y&nbsp; B E A U T Y &nbsp;B A R</em>
+      </h1>
+      <p class="hero__subtitle">Donde cada detalle se convierte en arte.</p>
+      <a href="#booking" class="btn btn--gold">Reservar cita</a>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="container about__grid">
+      <div class="about__media">
+        <div class="about__img about__img--1"></div>
+        <div class="about__img about__img--2"></div>
+      </div>
+      <div class="about__text reveal">
+        <p class="eyebrow">¿Quiénes somos?</p>
+        <h2 class="h2">El arte de sentirte hermosa.</h2>
+        <p>
+          En <strong>Bodrüm</strong> creemos que la belleza es una experiencia. Somos un
+          espacio dedicado al cuidado, al detalle y a resaltar la esencia única
+          de cada mujer. Nuestro equipo de especialistas combina técnica,
+          pasión y las mejores marcas para que cada visita sea un momento para ti.
+        </p>
+        <p>
+          Un ambiente cálido, elegante y pensado para que te desconectes del
+          mundo mientras te consentimos.
+        </p>
+        <a href="#services" class="btn btn--ghost">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Nuestros servicios</p>
+        <h2 class="h2">Cada detalle, una obra de arte.</h2>
+      </div>
+
+      <div class="services__filters" id="servicesFilters">
+        <button class="chip is-active" data-filter="all">Todos</button>
+        <button class="chip" data-filter="nails">Uñas</button>
+        <button class="chip" data-filter="lashes">Pestañas</button>
+        <button class="chip" data-filter="brows">Cejas</button>
+        <button class="chip" data-filter="facial">Facial</button>
+      </div>
+
+      <div class="services__grid" id="servicesGrid">
+        <!-- Inyectado por JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section products" id="products">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Productos con los que trabajamos</p>
+        <h2 class="h2">Marcas premium para cada tratamiento.</h2>
+      </div>
+
+      <div class="products__grid" id="productsGrid">
+        <!-- Inyectado por JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section booking" id="booking">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Reserva tu cita</p>
+        <h2 class="h2">Agenda tu momento Bodrüm.</h2>
+      </div>
+
+      <div class="booking__steps">
+        <div class="step is-active" data-step="1"><span>1</span> Tus datos</div>
+        <div class="step" data-step="2"><span>2</span> Especialista</div>
+        <div class="step" data-step="3"><span>3</span> Confirmación</div>
+      </div>
+
+      <form class="booking__form" id="bookingForm" novalidate>
+
+        <!-- PASO 1 -->
+        <div class="booking__panel is-active" data-panel="1">
+          <div class="grid2">
+            <label class="field">
+              <span>Nombre completo</span>
+              <input type="text" name="name" required placeholder="Ej. María López" />
+            </label>
+            <label class="field">
+              <span>Correo electrónico</span>
+              <input type="email" name="email" required placeholder="tu@correo.com" />
+            </label>
+            <label class="field">
+              <span>Teléfono</span>
+              <input type="tel" name="phone" required placeholder="+595 985 493 092" />
+            </label>
+            <label class="field">
+              <span>Fecha</span>
+              <input type="date" name="date" id="bookingDate" required />
+            </label>
+            <label class="field">
+              <span>Hora</span>
+              <select name="time" id="bookingTime" required>
+                <option value="">Selecciona una hora</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="field">
+            <span class="field__label">Servicios que deseas</span>
+            <div class="services-picker" id="servicesPicker">
+              <!-- Inyectado por JS -->
+            </div>
+          </div>
+
+          <div class="booking__summary">
+            <div>
+              <small>Servicios seleccionados</small>
+              <p id="summaryCount">0 servicios</p>
+            </div>
+            <div class="booking__total">
+              <small>Total</small>
+              <p id="summaryTotal">Gs. 0</p>
+            </div>
+          </div>
+
+          <div class="booking__actions">
+            <button type="button" class="btn btn--gold" id="toStep2">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="booking__panel" data-panel="2">
+          <p class="panel__intro">Elige con qué especialista deseas atenderte:</p>
+          <div class="specialists" id="specialistsGrid">
+            <!-- Inyectado por JS -->
+          </div>
+          <div class="booking__actions">
+            <button type="button" class="btn btn--ghost" data-back="1">Volver</button>
+            <button type="button" class="btn btn--gold" id="toStep3">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- PASO 3 -->
+        <div class="booking__panel" data-panel="3">
+          <div class="confirm" id="confirmBox">
+            <!-- Inyectado por JS -->
+          </div>
+          <div class="booking__actions">
+            <button type="button" class="btn btn--ghost" data-back="2">Volver</button>
+            <button type="submit" class="btn btn--gold" id="confirmBtn">Confirmar reserva</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="container footer__grid">
+      <div>
+        <h3 class="footer__brand">BODRÜM</h3>
+        <p class="footer__tag">Nails · Beauty Bar</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>Teléfono: +595 985 493 092</p>
+        <p>Email: hola@bodrum.com</p>
+      </div>
+      <div>
+        <h4>Horarios</h4>
+        <p>Lun – Sáb · 09:00 – 19:00</p>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <div class="socials">
+          <a href="https://www.instagram.com/bodrumbeautybar/" target="_blank" rel="noopener" class="social social--ig" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/>
+            </svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://wa.me/595985493092?text=Hola%20Bodr%C3%BCm%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20%E2%9C%A8" target="_blank" rel="noopener" class="social social--wa" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.9-.4-4.2-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> Bodrüm Beauty Bar. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/595985493092?text=Hola%20Bodr%C3%BCm%20%E2%9C%A8%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta%2Freserva.%20%C2%BFMe%20pueden%20ayudar%3F" target="_blank" rel="noopener" class="fab-wa" aria-label="Chatear por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.9-.4-4.2-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/>
+    </svg>
+    <span class="fab-wa__tooltip">Escríbenos</span>
+  </a>
+
+  <script src="js/data.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+  <script src="js/booking.js?v=4"></script>
+</body>
+</html>

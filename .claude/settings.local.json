@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL -o hero-1.jpg \"https://images.pexels.com/photos/3997379/pexels-photo-3997379.jpeg?auto=compress&cs=tinysrgb&w=1920\")",
+      "Bash(curl -sL -o hero-2.jpg \"https://images.pexels.com/photos/939835/pexels-photo-939835.jpeg?auto=compress&cs=tinysrgb&w=1920\")",
+      "Bash(curl -sL -o hero-3.jpg \"https://images.pexels.com/photos/704815/pexels-photo-704815.jpeg?auto=compress&cs=tinysrgb&w=1920\")",
+      "Bash(ls -lh hero-*.jpg)",
+      "Bash(curl -sL -o hero-4.jpg \"https://images.pexels.com/photos/3997382/pexels-photo-3997382.jpeg?auto=compress&cs=tinysrgb&w=1920\")",
+      "Bash(curl -sL -o hero-5.jpg \"https://images.pexels.com/photos/3373716/pexels-photo-3373716.jpeg?auto=compress&cs=tinysrgb&w=1920\")",
+      "Bash(curl -sL -o about-1.jpg \"https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=1200\")",
+      "Bash(curl -sL -o about-2.jpg \"https://images.pexels.com/photos/3765175/pexels-photo-3765175.jpeg?auto=compress&cs=tinysrgb&w=1200\")",
+      "Bash(curl -sL -o team-1.jpg \"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600\")",
+      "Bash(curl -s http://localhost:3000/js/data.js)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ls -lh /Users/junior/Desktop/DEV/BODRUM/assets/img/hero-*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote:*)"
+    ]
+  }
+}

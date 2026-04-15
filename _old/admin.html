@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BODRUM | Panel Administrativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="admin-body">
+
+  <!-- Login -->
+  <div class="admin-login" id="adminLogin">
+    <div class="admin-login-card">
+      <h2>BODRUM</h2>
+      <p>Panel Administrativo</p>
+      <div class="form-group">
+        <label for="adminPass">Contrasena</label>
+        <input type="password" id="adminPass" placeholder="Ingresa la contrasena">
+      </div>
+      <button class="btn btn-primary" id="btnLogin">Ingresar</button>
+      <p class="login-error" id="loginError">Contrasena incorrecta</p>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="adminDashboard" style="display:none">
+    <!-- Nav -->
+    <nav class="admin-nav">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="admin-nav-logo">BODRUM</span>
+        <span class="admin-nav-badge">Admin</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <a href="index.html" class="admin-nav-link">Ver pagina</a>
+        <button class="admin-nav-link" id="btnLogout">Cerrar sesion</button>
+      </div>
+    </nav>
+
+    <div class="admin-container">
+      <!-- Stats -->
+      <div class="admin-stats" id="adminStats">
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Hoy</div>
+          <div class="admin-stat-value" id="statToday">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Pendientes</div>
+          <div class="admin-stat-value" id="statPending">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Confirmadas</div>
+          <div class="admin-stat-value" id="statConfirmed">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-label">Total reservas</div>
+          <div class="admin-stat-value" id="statTotal">0</div>
+        </div>
+      </div>
+
+      <!-- Filtros -->
+      <div class="admin-filters">
+        <div>
+          <label for="filterDate">Fecha:</label>
+          <input type="date" id="filterDate">
+        </div>
+        <div>
+          <label for="filterStatus">Estado:</label>
+          <select id="filterStatus">
+            <option value="all">Todos</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="confirmada">Confirmada</option>
+            <option value="completada">Completada</option>
+            <option value="cancelada">Cancelada</option>
+          </select>
+        </div>
+        <button class="btn btn-outline" id="btnClearFilters" style="padding:10px 20px;font-size:0.8rem;">Limpiar</button>
+      </div>
+
+      <!-- Tabla -->
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Cliente</th>
+              <th>Telefono</th>
+              <th>Servicios</th>
+              <th>Especialista</th>
+              <th>Total</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="reservationsBody">
+            <!-- Generado por JS -->
+          </tbody>
+        </table>
+        <div class="admin-empty" id="adminEmpty" style="display:none;">
+          <h3>No hay reservas</h3>
+          <p>Las reservas realizadas desde la pagina apareceran aqui.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
