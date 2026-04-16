@@ -41,6 +41,13 @@ const BODRUM_PRODUCTS = [
     img: 'assets/img/products.jpg',
     desc: "Línea profesional de cuidado especializado para manos, pies y uñas. Formulada con aceite de cáñamo y aceite de almendra dulce, nutre profundamente las cutículas, suaviza la piel y fortalece las uñas desde adentro. Sus tratamientos — cremas hidratantes, aceites de cutículas y exfoliantes — restauran la suavidad y el brillo natural, siendo el estándar de oro en manicuras y pedicuras de salón a nivel mundial."
   },
+  {
+    id: 'p3',
+    name: "Dior Esmaltes",
+    brand: "Dior Beauty",
+    img: 'assets/img/products-2.jpg',
+    desc: "Los esmaltes Dior Vernis son la expresión más refinada del lujo en el cuidado de uñas. Con una fórmula de larga duración, cada tono ofrece una cobertura uniforme, acabado impecable y un brillo digno de alta costura. Inspirados en las colecciones de moda de la Maison Dior, sus colores — desde los clásicos nude y rojo hasta las propuestas más atrevidas — transforman cada manicura en una obra de arte sofisticada."
+  },
 ];
 
 const BODRUM_CURRENCY = 'Gs.';
