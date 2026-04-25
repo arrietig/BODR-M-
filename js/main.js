@@ -79,6 +79,138 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   renderServices();
 
+  // ---- MENU GRID (acordeón de servicios) ----
+  const menuGrid = document.getElementById('menuGrid');
+  if (menuGrid && typeof BODRUM_MENU !== 'undefined') {
+    let openId = null;
+
+    const buildPanel = (cat) => {
+      const groups = cat.groups.map(g => `
+        <div class="price-group">
+          ${g.label ? `<p class="price-group__label">${g.label}</p>` : ''}
+          ${g.note  ? `<p class="price-group__note">* ${g.note}</p>` : ''}
+          ${g.items.map(item => `
+            <div class="price-row">
+              <div>
+                <div class="price-row__name">${item.name}</div>
+                ${item.desc ? `<div class="price-row__desc">${item.desc}</div>` : ''}
+              </div>
+              <span class="price-row__price">${BODRUM_FMT(item.price)}</span>
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+      return `
+        <div class="menu-panel-wrap" id="panel-${cat.id}">
+          <div class="menu-panel">
+            <button class="menu-panel__close" data-close="${cat.id}">✕ &nbsp;Cerrar</button>
+            ${groups}
+          </div>
+        </div>`;
+    };
+
+    BODRUM_MENU.forEach((cat, i) => {
+      const card = document.createElement('div');
+      card.className = 'menu-card reveal';
+      card.dataset.id = cat.id;
+      card.innerHTML = `
+        <div class="menu-card__bg" style="background-image:url('${cat.img}')"></div>
+        <div class="menu-card__overlay"></div>
+        <div class="menu-card__label">
+          <span class="menu-card__icon">${cat.icon}</span>
+          <h3 class="menu-card__title">${cat.title}</h3>
+          <span class="menu-card__hint">Ver precios</span>
+        </div>`;
+      menuGrid.appendChild(card);
+      io.observe(card);
+
+      // Panel va después de cada fila de 3 (col 3, 6, etc.) o al final
+      const isLastInRow = (i + 1) % 3 === 0 || i === BODRUM_MENU.length - 1;
+      if (isLastInRow) {
+        const wrap = document.createElement('div');
+        wrap.innerHTML = buildPanel(cat);
+        // append panel placeholder for this row
+        menuGrid.appendChild(wrap.firstElementChild);
+        // pero necesitamos paneles para todos los de la fila
+      }
+    });
+
+    // Rehacemos: insertar un panel por cada card, ocultar/mostrar con JS
+    menuGrid.innerHTML = '';
+    BODRUM_MENU.forEach(cat => {
+      const card = document.createElement('div');
+      card.className = 'menu-card reveal';
+      card.dataset.id = cat.id;
+      card.innerHTML = `
+        <div class="menu-card__bg" style="background-image:url('${cat.img}')"></div>
+        <div class="menu-card__overlay"></div>
+        <div class="menu-card__label">
+          <span class="menu-card__icon">${cat.icon}</span>
+          <h3 class="menu-card__title">${cat.title}</h3>
+          <span class="menu-card__hint">Ver precios</span>
+        </div>`;
+      menuGrid.appendChild(card);
+      io.observe(card);
+    });
+
+    // Un único panel reutilizable
+    const panelWrap = document.createElement('div');
+    panelWrap.className = 'menu-panel-wrap';
+    panelWrap.id = 'menuPanelWrap';
+    panelWrap.style.gridColumn = '1 / -1';
+    panelWrap.innerHTML = '<div class="menu-panel" id="menuPanelInner"></div>';
+    menuGrid.appendChild(panelWrap);
+
+    const panelInner = panelWrap.querySelector('#menuPanelInner');
+
+    const openPanel = (cat) => {
+      const groups = cat.groups.map(g => `
+        <div class="price-group">
+          ${g.label ? `<p class="price-group__label">${g.label}</p>` : ''}
+          ${g.note  ? `<p class="price-group__note">* ${g.note}</p>` : ''}
+          ${g.items.map(item => `
+            <div class="price-row">
+              <div>
+                <div class="price-row__name">${item.name}</div>
+                ${item.desc ? `<div class="price-row__desc">${item.desc}</div>` : ''}
+              </div>
+              <span class="price-row__price">${BODRUM_FMT(item.price)}</span>
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+      panelInner.innerHTML = `
+        <button class="menu-panel__close" id="menuPanelClose">✕ &nbsp;Cerrar</button>
+        ${groups}`;
+      document.getElementById('menuPanelClose').addEventListener('click', closePanel);
+      // Mover panel después de la fila de la card activa
+      const cards = [...menuGrid.querySelectorAll('.menu-card')];
+      const idx = cards.findIndex(c => c.dataset.id === cat.id);
+      const rowLast = cards[Math.min(idx + (2 - idx % 3), cards.length - 1)];
+      rowLast.after(panelWrap);
+      panelWrap.classList.add('is-open');
+      setTimeout(() => panelWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+    };
+
+    const closePanel = () => {
+      panelWrap.classList.remove('is-open');
+      menuGrid.querySelectorAll('.menu-card').forEach(c => c.classList.remove('is-open'));
+      openId = null;
+    };
+
+    menuGrid.addEventListener('click', (e) => {
+      const card = e.target.closest('.menu-card');
+      if (!card) return;
+      const id = card.dataset.id;
+      menuGrid.querySelectorAll('.menu-card').forEach(c => c.classList.remove('is-open'));
+      if (openId === id) { closePanel(); return; }
+      openId = id;
+      card.classList.add('is-open');
+      const cat = BODRUM_MENU.find(c => c.id === id);
+      openPanel(cat);
+    });
+  }
+
   // Products grid
   const productsGrid = document.getElementById('productsGrid');
   if (productsGrid && typeof BODRUM_PRODUCTS !== 'undefined') {

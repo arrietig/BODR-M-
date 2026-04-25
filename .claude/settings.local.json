@@ -19,7 +19,12 @@
       "Bash(git branch:*)",
       "Bash(git remote:*)",
       "Bash(git push:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(curl -sL -o cat-manicura.jpg \"https://images.pexels.com/photos/3997381/pexels-photo-3997381.jpeg?auto=compress&cs=tinysrgb&w=900\")",
+      "Bash(curl -sL -o cat-pedicura.jpg \"https://images.pexels.com/photos/3997384/pexels-photo-3997384.jpeg?auto=compress&cs=tinysrgb&w=900\")",
+      "Bash(curl -sL -o cat-pestanas.jpg \"https://images.pexels.com/photos/3997990/pexels-photo-3997990.jpeg?auto=compress&cs=tinysrgb&w=900\")",
+      "Bash(curl -sL -o cat-maquillaje.jpg \"https://images.pexels.com/photos/2253832/pexels-photo-2253832.jpeg?auto=compress&cs=tinysrgb&w=900\")",
+      "Bash(curl -sL -o cat-cejas.jpg \"https://images.pexels.com/photos/7755239/pexels-photo-7755239.jpeg?auto=compress&cs=tinysrgb&w=900\")"
     ]
   }
 }
