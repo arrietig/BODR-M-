@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="menu-card__bg" style="background-image:url('${cat.img}')"></div>
         <div class="menu-card__overlay"></div>
         <div class="menu-card__label">
-          <span class="menu-card__icon">${cat.icon}</span>
           <h3 class="menu-card__title">${cat.title}</h3>
           <span class="menu-card__hint">Ver precios</span>
         </div>`;
@@ -145,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="menu-card__bg" style="background-image:url('${cat.img}')"></div>
         <div class="menu-card__overlay"></div>
         <div class="menu-card__label">
-          <span class="menu-card__icon">${cat.icon}</span>
           <h3 class="menu-card__title">${cat.title}</h3>
           <span class="menu-card__hint">Ver precios</span>
         </div>`;

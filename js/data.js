@@ -72,7 +72,6 @@ const BODRUM_MENU = [
   {
     id: 'pedicura',
     title: 'Pedicura',
-    icon: '🦶',
     img: 'assets/img/cat-pedicura.jpg',
     groups: [
       {
@@ -104,7 +103,6 @@ const BODRUM_MENU = [
   {
     id: 'pestanas',
     title: 'Extensiones de Pestañas',
-    icon: '👁',
     img: 'assets/img/cat-pestanas.jpg',
     groups: [
       {
@@ -134,7 +132,6 @@ const BODRUM_MENU = [
   {
     id: 'maquillaje',
     title: 'Make Up Artist',
-    icon: '✨',
     img: 'assets/img/cat-maquillaje.jpg',
     groups: [
       {
@@ -152,7 +149,6 @@ const BODRUM_MENU = [
   {
     id: 'cejas',
     title: 'Cejas & Henna',
-    icon: '🤎',
     img: 'assets/img/cat-cejas.jpg',
     groups: [
       {
@@ -173,7 +169,7 @@ const BODRUM_MENU = [
   {
     id: 'micropig',
     title: 'Micropigmentación',
-    icon: '🖊',
+
     img: 'assets/img/cat-micropig.jpg',
     groups: [
       {
