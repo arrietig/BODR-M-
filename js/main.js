@@ -9,25 +9,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ---- Hover-expand gallery (About section) ----
-  const gallery = document.getElementById('aboutGallery');
-  if (gallery) {
-    const items = [...gallery.querySelectorAll('.hx-item')];
-    // Set background images from data-img
-    items.forEach(el => {
-      el.style.backgroundImage = `url('${el.dataset.img}')`;
-    });
-    // Start with second item active
-    if (items[1]) items[1].classList.add('is-active');
+  // ---- Sticky card stack — About section (Skiper17 style) ----
+  const cards = document.querySelectorAll('.about-card');
+  if (cards.length > 0 && typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
 
-    const activate = (el) => {
-      items.forEach(i => i.classList.remove('is-active'));
-      el.classList.add('is-active');
-    };
-    items.forEach(el => {
-      el.addEventListener('mouseenter', () => activate(el));
-      el.addEventListener('click', () => activate(el));
+    const total = cards.length;
+
+    gsap.set(cards[0], { y: '0%', scale: 1, rotation: 0 });
+    for (let i = 1; i < total; i++) {
+      gsap.set(cards[i], { y: '100%', scale: 1, rotation: 0 });
+    }
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.sticky-cards',
+        start: 'top top',
+        end: `+=${window.innerHeight * (total - 1)}`,
+        pin: true,
+        scrub: 0.5,
+        pinSpacing: true,
+      },
     });
+
+    for (let i = 0; i < total - 1; i++) {
+      tl.to(cards[i],     { scale: 0.7, rotation: 5, duration: 1, ease: 'none' }, i);
+      tl.to(cards[i + 1], { y: '0%',                 duration: 1, ease: 'none' }, i);
+    }
   }
 
   // Nav scroll
