@@ -9,6 +9,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // ---- Hover-expand gallery (About section) ----
+  const gallery = document.getElementById('aboutGallery');
+  if (gallery) {
+    const items = [...gallery.querySelectorAll('.hx-item')];
+    // Set background images from data-img
+    items.forEach(el => {
+      el.style.backgroundImage = `url('${el.dataset.img}')`;
+    });
+    // Start with second item active
+    if (items[1]) items[1].classList.add('is-active');
+
+    const activate = (el) => {
+      items.forEach(i => i.classList.remove('is-active'));
+      el.classList.add('is-active');
+    };
+    items.forEach(el => {
+      el.addEventListener('mouseenter', () => activate(el));
+      el.addEventListener('click', () => activate(el));
+    });
+  }
+
   // Nav scroll
   const nav = document.getElementById('nav');
   const onScroll = () => {
