@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cItems = [...cTrack.querySelectorAll('.carousel-006__item')];
     const cDotBtns = [...cDots.querySelectorAll('.carousel-006__dot')];
     const total = cItems.length;
-    let current = 0;
+    const midIndex = Math.floor(total / 2);
+    let current = midIndex;
 
     const goTo = (idx, animate = true) => {
       current = ((idx % total) + total) % total;
@@ -60,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!animate) requestAnimationFrame(() => { cTrack.style.transition = ''; });
     };
 
-    // Init without animation to avoid flash
-    requestAnimationFrame(() => goTo(0, false));
+    // Init sin animación — arranca en la imagen del medio
+    requestAnimationFrame(() => goTo(midIndex, false));
     window.addEventListener('resize', () => goTo(current, false));
 
     cPrev.addEventListener('click', () => goTo(current - 1));
