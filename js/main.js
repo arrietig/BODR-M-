@@ -9,33 +9,73 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ---- Sticky card stack — About section (Skiper17 style) ----
-  const cards = document.querySelectorAll('.about-card');
-  if (cards.length > 0 && typeof gsap !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
+  // ---- Carousel 006 — About section (Skiper54 style) ----
+  const CAROUSEL_IMGS = [
+    { src: 'assets/img/about-1.jpg',  title: 'Nuestro espacio' },
+    { src: 'assets/img/hero-1.jpg',   title: 'Arte & detalle'  },
+    { src: 'assets/img/hero-2.jpg',   title: 'Cuidado personal'},
+    { src: 'assets/img/hero-3.jpg',   title: 'Tu momento'      },
+    { src: 'assets/img/about-2.jpg',  title: 'Especialistas'   },
+    { src: 'assets/img/hero-5.jpg',   title: 'Calidad premium' },
+    { src: 'assets/img/team-1.jpg',   title: 'Camila'          },
+    { src: 'assets/img/team-2.jpg',   title: 'Valentina'       },
+    { src: 'assets/img/team-3.jpg',   title: 'Andrea'          },
+  ];
 
-    const total = cards.length;
+  const cTrack = document.getElementById('carouselTrack');
+  const cDots  = document.getElementById('carouselDots');
+  const cPrev  = document.getElementById('carouselPrev');
+  const cNext  = document.getElementById('carouselNext');
 
-    gsap.set(cards[0], { y: '0%', scale: 1, rotation: 0 });
-    for (let i = 1; i < total; i++) {
-      gsap.set(cards[i], { y: '100%', scale: 1, rotation: 0 });
-    }
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.sticky-cards',
-        start: 'top top',
-        end: `+=${window.innerHeight * (total - 1)}`,
-        pin: true,
-        scrub: 0.5,
-        pinSpacing: true,
-      },
+  if (cTrack) {
+    CAROUSEL_IMGS.forEach((img, i) => {
+      cTrack.insertAdjacentHTML('beforeend', `
+        <div class="carousel-006__item" data-index="${i}">
+          <div class="carousel-006__clip">
+            <img src="${img.src}" alt="${img.title}" loading="lazy" />
+          </div>
+          <div class="carousel-006__title">${img.title}</div>
+        </div>`);
+      cDots.insertAdjacentHTML('beforeend',
+        `<button class="carousel-006__dot" data-dot="${i}" aria-label="Slide ${i + 1}"></button>`);
     });
 
-    for (let i = 0; i < total - 1; i++) {
-      tl.to(cards[i],     { scale: 0.7, rotation: 5, duration: 1, ease: 'none' }, i);
-      tl.to(cards[i + 1], { y: '0%',                 duration: 1, ease: 'none' }, i);
-    }
+    const cItems = [...cTrack.querySelectorAll('.carousel-006__item')];
+    const cDotBtns = [...cDots.querySelectorAll('.carousel-006__dot')];
+    const total = cItems.length;
+    let current = 0;
+
+    const goTo = (idx, animate = true) => {
+      current = ((idx % total) + total) % total;
+      cItems.forEach((el, i)   => el.classList.toggle('is-active', i === current));
+      cDotBtns.forEach((el, i) => el.classList.toggle('is-active', i === current));
+
+      const vw = cTrack.parentElement.getBoundingClientRect().width;
+      const iw = cItems[0].getBoundingClientRect().width;
+      const gap = 12;
+      const offset = vw / 2 - current * (iw + gap) - iw / 2;
+
+      if (!animate) cTrack.style.transition = 'none';
+      cTrack.style.transform = `translateX(${offset}px)`;
+      if (!animate) requestAnimationFrame(() => { cTrack.style.transition = ''; });
+    };
+
+    // Init without animation to avoid flash
+    requestAnimationFrame(() => goTo(0, false));
+    window.addEventListener('resize', () => goTo(current, false));
+
+    cPrev.addEventListener('click', () => goTo(current - 1));
+    cNext.addEventListener('click', () => goTo(current + 1));
+    cItems.forEach((el, i) => el.addEventListener('click', () => goTo(i)));
+    cDotBtns.forEach((el, i) => el.addEventListener('click', () => goTo(i)));
+
+    // Touch / swipe
+    let touchStartX = 0;
+    cTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    cTrack.addEventListener('touchend',   e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+    }, { passive: true });
   }
 
   // Nav scroll

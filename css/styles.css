@@ -306,46 +306,130 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ========== ABOUT ========== */
-/* ========== ABOUT — Sticky card stack (Skiper17 style) ========== */
-.about {
-  background: var(--c-bg);
+/* ========== ABOUT — Carousel 006 (Skiper54 style) ========== */
+.about { background: var(--c-bg); }
+
+.carousel-006 {
+  padding: 70px 0 20px;
+  overflow: hidden;
+  position: relative;
 }
 
-/* The pinnable stage */
-.sticky-cards {
-  height: 100vh;
+.carousel-006__viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-006__track {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 32px;
-  overflow: hidden;
-}
-
-/* Card stack container */
-.about__card-stack {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  height: 80vh;
-  border-radius: 28px;
-  overflow: hidden;
-}
-
-/* Individual cards */
-.about-card {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 28px;
+  height: 500px;
+  gap: 12px;
+  transition: transform 0.42s cubic-bezier(.4, 0, .2, 1);
   will-change: transform;
 }
 
-/* Text section below the sticky animation */
+/* Each card item */
+.carousel-006__item {
+  flex-shrink: 0;
+  width: 22vw;
+  height: 81.5%;   /* 407px at 500px track */
+  position: relative;
+  cursor: pointer;
+}
+
+/* The clipped image wrapper */
+.carousel-006__clip {
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+  clip-path: inset(15% 0 15% 0 round 2rem);
+  transition: clip-path 0.42s cubic-bezier(.4, 0, .2, 1);
+}
+.carousel-006__item.is-active .carousel-006__clip {
+  clip-path: inset(0% 0 0% 0 round 2rem);
+}
+
+.carousel-006__clip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  display: block;
+}
+
+/* Title below active card */
+.carousel-006__title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%);
+  padding: 12px 8px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(42, 31, 26, 0.35);
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.5s, filter 0.5s;
+  pointer-events: none;
+}
+.carousel-006__item.is-active .carousel-006__title {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* Controls row */
+.carousel-006__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 28px 0 10px;
+}
+
+.carousel-006__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(42, 31, 26, 0.1);
+  color: var(--c-ink);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.carousel-006__arrow:hover { background: rgba(42, 31, 26, 0.18); }
+
+.carousel-006__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.carousel-006__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #D9D9D9;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+  padding: 0;
+}
+.carousel-006__dot.is-active {
+  background: var(--c-ink);
+  transform: scale(1.2);
+}
+
+/* Text below carousel */
 .about__text-wrap {
-  padding: 90px 0 110px;
-  background: var(--c-bg);
+  padding: 60px 0 100px;
 }
 
 .about__text {
@@ -1112,9 +1196,8 @@ a { color: inherit; text-decoration: none; }
     box-shadow: var(--shadow);
   }
   .nav__links.is-open a { color: var(--c-ink); }
-  .sticky-cards { padding: 16px; }
-  .about__card-stack { max-width: 100%; height: 72vh; border-radius: 20px; }
-  .about-card { border-radius: 20px; }
+  .carousel-006__item { width: 73vw; }
+  .carousel-006__track { height: 380px; }
   .about__text { text-align: left; }
   .footer__grid { grid-template-columns: repeat(2, 1fr); }
   .footer__grid > div:first-child { grid-column: 1 / -1; }
